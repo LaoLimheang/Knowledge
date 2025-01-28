@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Science </title>
+    <link rel="stylesheet" href="for.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="logo.jpg" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+    .contact-form {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .contact-form h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .form-group input, 
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .form-group textarea {
+      resize: none;
+    }
+
+    .form-group button {
+      width: 100%;
+      padding: 10px;
+      background: #007bff;
+      color: #fff;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .form-group button:hover {
+      background: #0056b3;
+    }
+
+    .success-message,
+    .error-message {
+      text-align: center;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .success-message {
+      color: #28a745;
+    }
+
+    .error-message {
+      color: #dc3545;
+    }
+    .form{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f9f9f9;
+    }
+    .menu-item:hover {
+        transition: all 0.5s ease-in-out;
+        transform: scale(1.1);
+        text-decoration: underline;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      transition: all 0.3s ease;
+    }
+</style>
+<body class="bg-gray-100 text-gray-900">
+    <header class="bg-blue-600 text-white p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold"><a href="index.html"><i class="fas fa-arrow-left"></i></a> Computer Science</h1>
+                
+            <nav>
+                <div class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                <ul class="flex space-x-4">
+                    <li><a href="#home" class="hover:underline">Home</a></li>
+                    <li><a href="#articles" class="hover:underline">Articles</a></li>
+                    <li><a href="#discover" class="hover:underline">Discover</a></li>
+                    <li><a href="#contact" class="hover:underline">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+
+
+
+        
+    </header>
+    
+    <main class="container mx-auto my-8">
+        <!-- Hero Section -->
+        <section id="home" class="bg-white p-6 rounded-lg shadow-md">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold mb-4">Explore the Wonders of Computer Science.</h2>
+                    <p class="text-gray-700 mb-6">Software Development
+                        Software developers design, build, and maintain applications and systems. They work on everything from mobile apps to enterprise software. This career emphasizes problem-solving, programming languages, and an understanding of user needs.</p>
+                    <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"><a href="#app">Get Started</a></button>
+                </div>
+                <style>
+                    img{
+                        box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+                    }
+                    img:hover{
+                        transform: scale(0.9);
+                        transition: 0.5s ease;
+                    }
+                </style>
+                <div class="md:w-1/2 mt-6 md:mt-0">
+                    <img src="ai.jpg" alt="Science Image" class="rounded-lg shadow-lg">
+                </div>
+            </div>
+        </section>
+
+        <!-- Articles Section -->
+        <section id="articles" class="mt-12">
+            <h3 class="text-2xl font-bold mb-4">Featured Articles</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-4 rounded-lg shadow-md">
+                    <h4 class="font-bold text-lg">Coding Learning</h4>
+                    <p class="text-gray-700 mt-2">I will create a class soon. And we learn it from <span style="color: orange;">Html Css (Basic)</span>. Please support me.</p>
+                    <a href="explore.html" class="text-blue-600 hover:underline mt-4 block">Read More</a>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-md">
+                    <h4 class="font-bold text-lg">Advances in bussiness</h4>
+                    <p class="text-gray-700 mt-2">We are exploring the innovation and sales of website code created by me. And I will create it if supported. It is currently in limbo.</p>
+                    <a href="shop.html" class="text-blue-600 hover:underline mt-4 block">Read More</a>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-md" id="app">
+                    <h4 class="font-bold text-lg">Mobile App</h4>
+                    <p class="text-gray-700 mt-2">I will achieve it one day to become the creator of Mobile App such as Game or social Media.</p>
+                    <a href="#home" class="text-blue-600 hover:underline mt-4 block">Read More</a>
+                </div>
+            </div>
+        </section >
+
+        <!-- Discover Section -->
+        <section id="discover" class="mt-12 bg-blue-100 p-6 rounded-lg">
+            <h3 class="text-2xl font-bold mb-4">Discover More</h3>
+            <p class="text-gray-700">Our curated collection of resources and tools will help you dive deeper into the world of science.</p>
+            <ul class="mt-4 space-y-2">
+                <li><a href="#" class="text-blue-600 hover:underline">Interactive Simulations</a></li>
+                <li><a href="#" class="text-blue-600 hover:underline">Educational Videos</a></li>
+                <li><a href="#" class="text-blue-600 hover:underline">Research Papers</a></li>
+            </ul>
+        </section>
+
+
+        <div class="form" id="contact">
+            <div class="contact-form">
+                <h2>Contact Us</h2>
+                <form id="contactForm">
+                  <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Your Email" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+                  </div>
+                  <div class="form-group">
+                    <button type="submit">Send Message</button>
+                  </div>
+                </form>
+                <div class="success-message" id="successMessage" style="display: none;">Your message was sent successfully!</div>
+                <div class="error-message" id="errorMessage" style="display: none;">Failed to send your message. Please try again.</div>
+              </div>
+        </div>
+        <script type="text/javascript"
+                src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+        </script>
+        <script type="text/javascript">
+           (function(){
+              emailjs.init({
+                publicKey: "7DBduPWltULBtnd92",
+              });
+           })();
+        </script>
+          <script>
+            (function() {
+              emailjs.init("7DBduPWltULBtnd92"); // Replace with your EmailJS user ID
+            })();
+        
+            const contactForm = document.getElementById("contactForm");
+            const successMessage = document.getElementById("successMessage");
+            const errorMessage = document.getElementById("errorMessage");
+        
+            contactForm.addEventListener("submit", function(e) {
+              e.preventDefault();
+        
+              const formData = new FormData(contactForm);
+              const formObject = Object.fromEntries(formData.entries());
+        
+              emailjs.send("service_wi7qq88", "template_kxgk0ul", formObject) // Replace with your EmailJS service and template IDs
+                .then(() => {
+                  successMessage.style.display = "block";
+                  errorMessage.style.display = "none";
+                  contactForm.reset();
+                })
+                .catch(() => {
+                  successMessage.style.display = "none";
+                  errorMessage.style.display = "block";
+                });
+            });
+          </script>
+        </section>
+    </main>
+
+    <footer class="bg-blue-600 text-white text-center p-4 mt-12">
+        <p>&copy; 2025 knowledge Hub. All rights reserved.</p>
+    </footer>
+</body>
+</html>

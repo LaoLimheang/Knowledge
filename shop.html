@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="Testing.css">
+  <link rel="icon" href="logo.jpg" type="image/x-icon">
+
+  <style>
+    body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #eef2f5;
+            color: #333;
+        }
+        header {
+            background-color: #1e90ff;
+            color: #fff;
+            padding: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+        .shop-items, .cart, .admin-section {
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            overflow: hidden;
+        }
+        .shop-items h2, .cart h2, .admin-section h2 {
+            background-color: #1e90ff;
+            color: #fff;
+            margin: 0;
+            padding: 1rem;
+            font-size: 1.5rem;
+        }
+        .item, .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #e6e6e6;
+        }
+        .item:last-child, .cart-item:last-child {
+            border-bottom: none;
+        }
+        .item span, .cart-item span {
+            font-size: 1rem;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 0.9rem;
+            color: #fff;
+            background-color: #1e90ff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0d6efd;
+        }
+        .cart-total {
+            text-align: right;
+            padding: 1rem;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        .admin-form {
+            padding: 1rem;
+        }
+        .admin-form input {
+            padding: 0.5rem;
+            font-size: 1rem;
+            margin-right: 10px;
+        }
+        .admin-form button {
+            padding: 0.5rem 1rem;
+        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      color: white;
+      animation: slideIn 0.5s ease-out;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: flex-start;
+    }
+
+    .menu {
+      display: flex;
+      gap: 30px;
+    }
+
+    .menu-item {
+      text-decoration: none;
+      color: white;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    .menu-item:hover {
+        transition: all 0.5s ease-in-out;
+        transform: scale(1.1);
+        color: red;
+        text-decoration: underline;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      transition: all 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+      .menu {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background-color: #333;
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      .menu.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+    }
+    .navbar .logo a{
+      color: white;
+    }
+  </style>
+</head>
+<header><nav class="navbar">
+    <div class="logo"><a href="index.html"><i class="fas fa-right-to-bracket"></i></a> Knowledge</div>
+    <div class="menu-toggle" id="menuToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="menu" id="menu">
+      <a href="#home" class="menu-item">Home</a>
+      <a href="#" class="menu-item">About</a>
+      <a href="#" class="menu-item">Services</a>
+      <a href="#" class="menu-item">Contact</a>
+    </div>
+  </nav></header>
+<body>
+  <header>
+    <h1>Welcome to the Shop</h1>
+</header>
+<div class="container">
+    <!-- Admin Section -->
+    <section class="admin-section">
+        <h2>Admin Section</h2>
+        <div class="admin-form">
+            <input type="password" id="admin-password" placeholder="Enter Admin Password">
+            <button onclick="toggleAdmin()">Login</button>
+        </div>
+        <div id="admin-panel" style="display: none;">
+            <input type="text" id="item-name" placeholder="Item Name">
+            <input type="number" id="item-price" placeholder="Item Price">
+            <button onclick="addNewItem()">Add Item</button>
+        </div>
+    </section>
+
+    <!-- Shop Items Section -->
+    <section class="shop-items">
+        <h2>Available Items</h2>
+        <div id="shop-items-list">
+            <div class="item">
+                <span>Item 1 - $10</span>
+                <button onclick="addToCart('Item 1', 10)">Add to Cart</button>
+            </div>
+            <div class="item">
+                <span>Item 2 - $20</span>
+                <button onclick="addToCart('Item 2', 20)">Add to Cart</button>
+            </div>
+            <div class="item">
+                <span>Item 3 - $15</span>
+                <button onclick="addToCart('Item 3', 15)">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Section -->
+    <section class="cart">
+        <h2>Your Cart</h2>
+        <div id="cart-items" class="empty-cart">
+            <p>Your cart is empty.</p>
+        </div>
+        <div class="cart-total" id="cart-total">
+            Total: $0
+        </div>
+        <button onclick="placeOrder()" id="place-order-btn" disabled>Place Order</button>
+    </section>
+</div>
+
+<script>
+    const cart = [];
+    const adminPassword = "admin123"; // Change this to your desired password
+
+    function addToCart(itemName, itemPrice) {
+        cart.push({ name: itemName, price: itemPrice });
+        updateCart();
+    }
+
+    function updateCart() {
+        const cartItemsDiv = document.getElementById('cart-items');
+        const cartTotalDiv = document.getElementById('cart-total');
+        const placeOrderBtn = document.getElementById('place-order-btn');
+
+        if (cart.length === 0) {
+            cartItemsDiv.innerHTML = '<p>Your cart is empty.</p>';
+            cartItemsDiv.className = 'empty-cart';
+            cartTotalDiv.textContent = 'Total: $0';
+            placeOrderBtn.disabled = true;
+            return;
+        }
+
+        cartItemsDiv.className = '';
+        cartItemsDiv.innerHTML = cart.map((item, index) => `
+            <div class="cart-item">
+                <span>${item.name} - $${item.price}</span>
+                <button onclick="removeFromCart(${index})">Remove</button>
+            </div>
+        `).join('');
+
+        const total = cart.reduce((sum, item) => sum + item.price, 0);
+        cartTotalDiv.textContent = `Total: $${total}`;
+        placeOrderBtn.disabled = false;
+    }
+
+    function removeFromCart(index) {
+        cart.splice(index, 1);
+        updateCart();
+    }
+
+    function placeOrder() {
+        alert('Your order has been placed successfully!');
+        cart.length = 0; // Clear the cart
+        updateCart();
+    }
+
+    function toggleAdmin() {
+        const password = document.getElementById('admin-password').value;
+        const adminPanel = document.getElementById('admin-panel');
+
+        if (password === adminPassword) {
+            adminPanel.style.display = 'block';
+            alert('Welcome, Admin!');
+        } else {
+            alert('Incorrect password!');
+        }
+    }
+
+    function addNewItem() {
+        const itemName = document.getElementById('item-name').value;
+        const itemPrice = parseFloat(document.getElementById('item-price').value);
+        const shopItemsList = document.getElementById('shop-items-list');
+
+        if (itemName && itemPrice) {
+            const newItem = document.createElement('div');
+            newItem.className = 'item';
+            newItem.innerHTML = `
+                <span>${itemName} - $${itemPrice}</span>
+                <button onclick="addToCart('${itemName}', ${itemPrice})">Add to Cart</button>
+            `;
+            shopItemsList.appendChild(newItem);
+
+            // Clear input fields
+            document.getElementById('item-name').value = '';
+            document.getElementById('item-price').value = '';
+        } else {
+            alert('Please fill out both fields.');
+        }
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const menu = document.getElementById('menu');
+
+    menuToggle.addEventListener('click', () => {
+      menu.classList.toggle('active');
+    });
+  </script>
+
+</body>
+</html>

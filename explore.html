@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>classroom</title>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="Testing.css">
+  <link rel="icon" href="logo.jpg" type="image/x-icon">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      color: white;
+      background-color: #2563eb;
+      animation: slideIn 0.5s ease-out;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: flex-start;
+    }
+
+    .menu {
+      display: flex;
+      gap: 30px;
+    }
+
+    .menu-item {
+      text-decoration: none;
+      color: white;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    .menu-item:hover {
+        transition: all 0.5s ease-in-out;
+        transform: scale(1.1);
+        text-decoration: underline;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      transition: all 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+      .menu {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background-color: #333;
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      .menu.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+    }
+    .navbar .logo a{
+      color: white;
+    }
+    .contact-form {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .contact-form h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .form-group input, 
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .form-group textarea {
+      resize: none;
+    }
+
+    .form-group button {
+      width: 100%;
+      padding: 10px;
+      background: #007bff;
+      color: #fff;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .form-group button:hover {
+      background: #0056b3;
+    }
+
+    .success-message,
+    .error-message {
+      text-align: center;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .success-message {
+      color: #28a745;
+    }
+
+    .error-message {
+      color: #dc3545;
+    }
+    .form{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<header><nav class="navbar">
+    <div class="logo"><a href="index.html"><i class="fas fa-right-to-bracket"></i></a> Knowledge</div>
+    <div class="menu-toggle" id="menuToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="menu" id="menu">
+      <a href="#home" class="menu-item">Home</a>
+      <a href="History.html" class="menu-item">About</a>
+      <a href="shop.html" class="menu-item">shop</a>
+      <a href="#contact" class="menu-item">Contact</a>
+    </div>
+  </nav>
+<body>
+ 
+
+
+
+
+
+
+    <div class="bodypage">
+      <main class="container mx-auto px-4 py-8">
+        <section class="bg-white rounded-lg shadow-lg p-6 text-center">
+          <h2 class="text-xl font-semibold text-gray-800 mb-4">Welcome to Classroom</h2>
+          <p class="text-gray-700 mb-6">Start your journey to learn HTML and CSS! Choose an option below to proceed:</p>
+          <div class="flex justify-center gap-4">
+            <button id="go-to-learn-code" class="px-6 py-3 bg-green-600 text-white font-semibold rounded-lg shadow hover:bg-green-700">Learn Code</button>
+            <button id="go-to-run-code" class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow hover:bg-blue-700">Run Code</button>
+          </div>
+        </section>
+    
+        <section id="learn-code-section" class="hidden mt-8">
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">Learn HTML and CSS</h3>
+          <div class="bg-gray-50 p-4 rounded-lg shadow">
+            <p class="text-gray-600 mb-4"><span style="color: orange;">EXAMPLE CODE:</span> <br> HTML (HyperText Markup Language) and CSS (Cascading Style Sheets) are the building blocks of web design. Below is an example of basic HTML and CSS:</p>
+            <pre class="bg-gray-200 p-4 rounded-lg text-sm text-left overflow-auto">
+    &lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;style&gt;
+          body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+          }
+          h1 {
+            color: blue;
+          }
+        &lt;/style&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;h1&gt;Hello, World!&lt;/h1&gt;
+        &lt;p&gt;Welcome to learning HTML and CSS.&lt;/p&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+            </pre>
+            <p class="text-gray-600 mt-4">You can use this structure to build simple web pages. Click "Run Code" to practice coding.</p>
+    
+            <h4 class="text-md font-medium text-gray-700 mt-4">HTML Elements</h4>
+            <ul class="list-disc list-inside text-gray-600">
+              <li>&lt;li&gt; - List Item</li>
+              <li>&lt;ul&gt; - Unordered List</li>
+              <li>&lt;a&gt; - Anchor (Link)</li>
+              <li>&lt;span&gt; - Inline Container</li>
+              <li>&lt;p&gt; - Paragraph</li>
+              <li>&lt;h1&gt; to &lt;h6&gt; - Headings</li>
+              <li>&lt;div&gt; - Division</li>
+              <li>&lt;nav&gt; - Navigation</li>
+              <li>&lt;link&gt; - External Resource Link</li>
+            </ul>
+    
+            <h4 class="text-md font-medium text-gray-700 mt-4">CSS Properties</h4>
+            <ul class="list-disc list-inside text-gray-600">
+              <li>color - Text Color</li>
+              <li>background-color - Background Color</li>
+              <li>background-image - Background Image</li>
+              <li>transform - Transform Element</li>
+              <li>display - Element Display</li>
+              <li>margin - Space Outside Element</li>
+              <li>gap - Gap Between Elements</li>
+              <li>@keyframes - Define Animations</li>
+              <li>animation - Apply Animation</li>
+              <li>border - Element Border</li>
+              <li>border-radius - Rounded Corners</li>
+              <li>flex-direction - Flexbox Direction</li>
+              <li>transition - Smooth Changes</li>
+              <li>text-decoration - Text Styling</li>
+              <li>box-shadow - Shadow Around Box</li>
+              <li>text-shadow - Shadow Around Text</li>
+            </ul>
+    
+            <p class="text-gray-600 mt-4">These elements and properties are the foundation for creating and styling web pages. Experiment with them in the practice section.</p>
+          </div>
+        </section>
+    
+        <section id="run-code-section" class="hidden mt-8">
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">Practice: Basic HTML Structure</h3>
+          <div class="bg-gray-50 p-4 rounded-lg shadow">
+            <p class="text-gray-600 mb-4">Below is a basic HTML structure. Try editing and running it!</p>
+            <textarea id="code-editor" class="w-full h-48 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Type your HTML code here..."></textarea>
+            <button id="run-code" class="mt-4 px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow hover:bg-blue-700">Run Code</button>
+          </div>
+          <h4 class="text-lg font-medium mt-6">Output:</h4>
+          <iframe id="output" class="w-full h-48 border border-gray-300 rounded-lg"></iframe>
+        </section>
+      </main>
+    
+
+    </div>
+
+<div class="form" id="contact">
+    <div class="contact-form">
+        <h2>Contact Us</h2>
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Your Email" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+          </div>
+          <div class="form-group">
+            <button type="submit">Send Message</button>
+          </div>
+        </form>
+        <div class="success-message" id="successMessage" style="display: none;">Your message was sent successfully!</div>
+        <div class="error-message" id="errorMessage" style="display: none;">Failed to send your message. Please try again.</div>
+      </div>
+</div>
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "7DBduPWltULBtnd92",
+      });
+   })();
+</script>
+  <script>
+    (function() {
+      emailjs.init("7DBduPWltULBtnd92"); // Replace with your EmailJS user ID
+    })();
+
+    const contactForm = document.getElementById("contactForm");
+    const successMessage = document.getElementById("successMessage");
+    const errorMessage = document.getElementById("errorMessage");
+
+    contactForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const formData = new FormData(contactForm);
+      const formObject = Object.fromEntries(formData.entries());
+
+      emailjs.send("service_wi7qq88", "template_kxgk0ul", formObject) // Replace with your EmailJS service and template IDs
+        .then(() => {
+          successMessage.style.display = "block";
+          errorMessage.style.display = "none";
+          contactForm.reset();
+        })
+        .catch(() => {
+          successMessage.style.display = "none";
+          errorMessage.style.display = "block";
+        });
+    });
+  </script>
+
+
+
+
+      <footer class=" text-black py-4 mt-8">
+        <div class="container mx-auto px-4 text-center">
+          <p>&copy; 2025 Knowledge. All rights reserved.</p>
+        </div>
+      </footer>
+    
+      <script>
+        const learnCodeSection = document.getElementById('learn-code-section');
+        const runCodeSection = document.getElementById('run-code-section');
+        const goToLearnCodeButton = document.getElementById('go-to-learn-code');
+        const goToRunCodeButton = document.getElementById('go-to-run-code');
+        const runButton = document.getElementById('run-code');
+        const editor = document.getElementById('code-editor');
+        const output = document.getElementById('output');
+    
+        goToLearnCodeButton.addEventListener('click', () => {
+          learnCodeSection.classList.remove('hidden');
+          runCodeSection.classList.add('hidden');
+          window.scrollTo({ top: learnCodeSection.offsetTop, behavior: 'smooth' });
+        });
+    
+        goToRunCodeButton.addEventListener('click', () => {
+          runCodeSection.classList.remove('hidden');
+          learnCodeSection.classList.add('hidden');
+          window.scrollTo({ top: runCodeSection.offsetTop, behavior: 'smooth' });
+        });
+    
+        runButton.addEventListener('click', () => {
+          const code = editor.value;
+          output.srcdoc = code;
+        });
+      </script>
+    
+
+
+
+
+
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const menu = document.getElementById('menu');
+
+    menuToggle.addEventListener('click', () => {
+      menu.classList.toggle('active');
+    });
+  </script>
+
+</body>
+</html>
